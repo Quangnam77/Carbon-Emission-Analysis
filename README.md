@@ -173,7 +173,6 @@ There are three industry groups have the most carbon emissions: Electrical Equip
 ```sql
 SELECT 
 	industry_groups.industry_group, 	
-	product_name, 
 	ROUND(SUM(carbon_footprint_pcf),2) AS "carbon emissions"
 FROM product_emissions pe
 JOIN industry_groups ON pe.industry_group_id = industry_groups.id
@@ -182,16 +181,64 @@ ORDER BY ROUND(SUM(carbon_footprint_pcf),2) DESC
 LIMIT 10;
 ```
 Result
-|industry_group|product_name|carbon emissions|
-|--------------|------------|----------------|
-|Electrical Equipment and Machinery|ACTI9 IID K 2P 40A 30MA AC-TYPE RESIDUAL CURRENT CIRCUIT BREAKER|9801558.00|
-|Automobiles & Components|VW Polo V 1.6 TDI BlueMotion Technology|2582264.00|
-|Materials|KURALON  fiber|577595.00|
-|Technology Hardware & Equipment|Multifunction Printers|363776.00|
-|Capital Goods|Office Chair|258712.00|
-|"Food, Beverage & Tobacco"|Frosted Flakes(R) Cereal|111131.00|
-|"Pharmaceuticals, Biotechnology & Life Sciences"|Alliance HPLC (High Peformance Liquid Chromatography)  The Alliance is an HPLC that is unique in that it has a single set of electronic boards that control the functions for both the solvent delivery system and the autosampler in the liquid chromatograph.|72486.00|
-|Chemicals|Mobile Batteries|62369.00|
-|Software & Services|USB software|46544.00|
-|Media|"Bloomberg's standard-issue flat panel configuration (prior to 2010) was two 19\" panels mounted on a metal stand. In early 2010 Bloomberg engaged in the WRI Product Life Cycle Roadtest for this functional unit (cradle-to-grave). The functional unit has a lifespan of 5 years, so the emissions indicated [in this report] are the full emissions associated with that lifespan."|23017.00|
+|industry_group|carbon emissions|
+|--------------|----------------|
+|Electrical Equipment and Machinery|9801558.00|
+|Automobiles & Components|2582264.00|
+|Materials|577595.00|
+|Technology Hardware & Equipment|363776.00|
+|Capital Goods|258712.00|
+|"Food, Beverage & Tobacco"|111131.00|
+|"Pharmaceuticals, Biotechnology & Life Sciences"|72486.00|
+|Chemicals|62369.00|
+|Software & Services|46544.00|
+|Media|23017.00|
 ### What are the companies with the highest contribution to carbon emissions?
+```sql
+SELECT 
+	c.company_name, 	 
+	ROUND(SUM(carbon_footprint_pcf),2) AS "carbon emissions"
+FROM product_emissions pe
+JOIN companies c  ON pe.company_id  = c.id
+GROUP BY (c.company_name )
+ORDER BY ROUND(SUM(carbon_footprint_pcf),2) DESC
+LIMIT 10;
+```
+Result
+|company_name|carbon emissions|
+|------------|----------------|
+|"Gamesa Corporación Tecnológica, S.A."|9778464.00|
+|Daimler AG|1594300.00|
+|Volkswagen AG|655960.00|
+|"Mitsubishi Gas Chemical Company, Inc."|212016.00|
+|"Hino Motors, Ltd."|191687.00|
+|Arcelor Mittal|167007.00|
+|Weg S/A|160655.00|
+|General Motors Company|137007.00|
+|"Lexmark International, Inc."|132012.00|
+|"Daikin Industries, Ltd."|105600.00|
+### What are the countries with the highest contribution to carbon emissions?
+```sql
+SELECT 
+	c.country_name , 	 
+	ROUND(SUM(carbon_footprint_pcf),2) AS "carbon emissions"
+FROM product_emissions pe
+JOIN countries c   ON pe.company_id  = c.id
+GROUP BY (c.country_name  )
+ORDER BY ROUND(SUM(carbon_footprint_pcf),2) DESC
+LIMIT 10;
+```
+Result
+|country_name|carbon emissions|
+|------------|----------------|
+|Germany|9778464.00|
+|Lithuania|212016.00|
+|Greece|191687.00|
+|Japan|132012.00|
+|Colombia|105600.00|
+|South Africa|35505.00|
+|France|21364.00|
+|Italy|20000.00|
+|Ireland|11160.00|
+|India|9328.00|
+### What is the trend of carbon footprints (PCFs) over the years?
