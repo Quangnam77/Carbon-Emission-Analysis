@@ -174,24 +174,24 @@ There are three industry groups have the most carbon emissions: Electrical Equip
 SELECT 
 	industry_groups.industry_group, 	
 	product_name, 
-	ROUND(AVG(carbon_footprint_pcf),2) AS "carbon emissions"
+	ROUND(SUM(carbon_footprint_pcf),2) AS "carbon emissions"
 FROM product_emissions pe
 JOIN industry_groups ON pe.industry_group_id = industry_groups.id
 GROUP BY (industry_groups.industry_group )
-ORDER BY ROUND(AVG(carbon_footprint_pcf),2) DESC
+ORDER BY ROUND(SUM(carbon_footprint_pcf),2) DESC
 LIMIT 10;
 ```
 Result
 |industry_group|product_name|carbon emissions|
 |--------------|------------|----------------|
-|Electrical Equipment and Machinery|ACTI9 IID K 2P 40A 30MA AC-TYPE RESIDUAL CURRENT CIRCUIT BREAKER|891050.73|
-|Automobiles & Components|VW Polo V 1.6 TDI BlueMotion Technology|35373.48|
-|"Pharmaceuticals, Biotechnology & Life Sciences"|Alliance HPLC (High Peformance Liquid Chromatography)  The Alliance is an HPLC that is unique in that it has a single set of electronic boards that control the functions for both the solvent delivery system and the autosampler in the liquid chromatograph.|24162.00|
-|Capital Goods|Office Chair|7391.77|
-|Materials|KURALON  fiber|3208.86|
-|"Mining - Iron, Aluminum, Other Metals"|Hot Rolled Steel (HR)|2727.00|
-|Energy|Natural Gas|2154.80|
-|Chemicals|Mobile Batteries|1949.03|
-|Media|"Bloomberg's standard-issue flat panel configuration (prior to 2010) was two 19\" panels mounted on a metal stand. In early 2010 Bloomberg engaged in the WRI Product Life Cycle Roadtest for this functional unit (cradle-to-grave). The functional unit has a lifespan of 5 years, so the emissions indicated [in this report] are the full emissions associated with that lifespan."|1534.47|
-|Software & Services|USB software|1368.94|
+|Electrical Equipment and Machinery|ACTI9 IID K 2P 40A 30MA AC-TYPE RESIDUAL CURRENT CIRCUIT BREAKER|9801558.00|
+|Automobiles & Components|VW Polo V 1.6 TDI BlueMotion Technology|2582264.00|
+|Materials|KURALON  fiber|577595.00|
+|Technology Hardware & Equipment|Multifunction Printers|363776.00|
+|Capital Goods|Office Chair|258712.00|
+|"Food, Beverage & Tobacco"|Frosted Flakes(R) Cereal|111131.00|
+|"Pharmaceuticals, Biotechnology & Life Sciences"|Alliance HPLC (High Peformance Liquid Chromatography)  The Alliance is an HPLC that is unique in that it has a single set of electronic boards that control the functions for both the solvent delivery system and the autosampler in the liquid chromatograph.|72486.00|
+|Chemicals|Mobile Batteries|62369.00|
+|Software & Services|USB software|46544.00|
+|Media|"Bloomberg's standard-issue flat panel configuration (prior to 2010) was two 19\" panels mounted on a metal stand. In early 2010 Bloomberg engaged in the WRI Product Life Cycle Roadtest for this functional unit (cradle-to-grave). The functional unit has a lifespan of 5 years, so the emissions indicated [in this report] are the full emissions associated with that lifespan."|23017.00|
 ### What are the companies with the highest contribution to carbon emissions?
