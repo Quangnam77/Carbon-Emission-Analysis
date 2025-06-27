@@ -168,6 +168,7 @@ Result
 |Mercedes-Benz GLE (GLE 500 4MATIC)|91000.00|Automobiles & Components|
 |Mercedes-Benz S-Class (S 500)|85000.00|Automobiles & Components|
 |Mercedes-Benz SL (SL 350)|72000.00|Automobiles & Components|
+There are three industry groups have the most carbon emissions: 
 ### What are the industries with the highest contribution to carbon emissions?
 ```sql
 SELECT 
@@ -193,3 +194,4 @@ Result
 |Chemicals|Mobile Batteries|1949.03|
 |Media|"Bloomberg's standard-issue flat panel configuration (prior to 2010) was two 19\" panels mounted on a metal stand. In early 2010 Bloomberg engaged in the WRI Product Life Cycle Roadtest for this functional unit (cradle-to-grave). The functional unit has a lifespan of 5 years, so the emissions indicated [in this report] are the full emissions associated with that lifespan."|1534.47|
 |Software & Services|USB software|1368.94|
+### What are the companies with the highest contribution to carbon emissions?
