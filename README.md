@@ -143,3 +143,28 @@ Result
 |Mercedes-Benz GLE (GLE 500 4MATIC)|91000.00|
 |Mercedes-Benz S-Class (S 500)|85000.00|
 |Mercedes-Benz SL (SL 350)|72000.00|
+### What are the industry groups of these products?
+```sql
+SELECT 
+	product_name, 
+	ROUND(AVG(carbon_footprint_pcf),2) AS "carbon emissions",
+	industry_groups.industry_group 
+FROM product_emissions pe
+JOIN industry_groups ON pe.industry_group_id = industry_groups.id
+GROUP BY (pe.product_name )
+ORDER BY ROUND(AVG(carbon_footprint_pcf),2) DESC
+LIMIT 10;
+```
+Result
+|product_name|carbon emissions|industry_group|
+|------------|----------------|--------------|
+|Wind Turbine G128 5 Megawats|3718044.00|Electrical Equipment and Machinery|
+|Wind Turbine G132 5 Megawats|3276187.00|Electrical Equipment and Machinery|
+|Wind Turbine G114 2 Megawats|1532608.00|Electrical Equipment and Machinery|
+|Wind Turbine G90 2 Megawats|1251625.00|Electrical Equipment and Machinery|
+|Land Cruiser Prado. FJ Cruiser. Dyna trucks. Toyoace.IMV def unit.|191687.00|Automobiles & Components|
+|Retaining wall structure with a main wall (sheet pile): 136 tonnes of steel sheet piles and 4 tonnes of tierods per 100 meter wall|167000.00|Materials|
+|TCDE|99075.00|Materials|
+|Mercedes-Benz GLE (GLE 500 4MATIC)|91000.00|Automobiles & Components|
+|Mercedes-Benz S-Class (S 500)|85000.00|Automobiles & Components|
+|Mercedes-Benz SL (SL 350)|72000.00|Automobiles & Components|
