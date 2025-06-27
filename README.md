@@ -120,3 +120,17 @@ Received: 171 rows
 | 10418-1-2013 | 84         | 9          | 19                | 2013 | Portland Cement                                                 | 1000      | 1102                 | N/a (product with insufficient stage-level data) | N/a (product with insufficient stage-level data) | N/a (product with insufficient stage-level data) | 2               | 
 | 10661-1-2014 | 85         | 28         | 11                | 2014 | 501® Original Jeans – Dark Stonewash                            | 0.997     | 16                   | N/a (product with insufficient stage-level data) | N/a (product with insufficient stage-level data) | N/a (product with insufficient stage-level data) | 2               | 
 | 10661-1-2015 | 85         | 28         | 6                 | 2015 | 501® Original Jeans – Dark Stonewash                            | 0.997     | 16                   | N/a (product with insufficient stage-level data) | N/a (product with insufficient stage-level data) | N/a (product with insufficient stage-level data) | 2               | 
+### Which products contribute the most to carbon emissions?
+```sql
+SELECT 
+	product_name, 
+	ROUND(AVG(carbon_footprint_pcf),2) AS "carbon emissions"
+FROM product_emissions pe
+GROUP BY (pe.product_name )
+ORDER BY ROUND(AVG(carbon_footprint_pcf),2) DESC
+LIMIT 1;
+```
+Result
+|product_name|carbon emissions|
+|------------|----------------|
+|Wind Turbine G128 5 Megawats|3718044.00|
