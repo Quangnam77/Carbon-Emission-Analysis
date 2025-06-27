@@ -168,7 +168,7 @@ Result
 |Mercedes-Benz GLE (GLE 500 4MATIC)|91000.00|Automobiles & Components|
 |Mercedes-Benz S-Class (S 500)|85000.00|Automobiles & Components|
 |Mercedes-Benz SL (SL 350)|72000.00|Automobiles & Components|
-There are three industry groups have the most carbon emissions: 
+There are three industry groups have the most carbon emissions: Electrical Equipment and Machinery, Automobiles & Components, Materials
 ### What are the industries with the highest contribution to carbon emissions?
 ```sql
 SELECT 
